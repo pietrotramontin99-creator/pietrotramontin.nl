@@ -1,21 +1,9 @@
-const menuButton = document.querySelector(".menu-button");
-const nav = document.querySelector("#site-nav");
-const navLinks = nav.querySelectorAll("a");
+document.getElementById("year").textContent = new Date().getFullYear();
 
-menuButton.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("open");
-  document.body.classList.toggle("menu-open", isOpen);
-  menuButton.setAttribute("aria-expanded", String(isOpen));
-  menuButton.textContent = isOpen ? "Sluiten" : "Menu";
-});
-
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    nav.classList.remove("open");
-    document.body.classList.remove("menu-open");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.textContent = "Menu";
+document.querySelectorAll("img").forEach((img) => {
+  img.addEventListener("error", () => {
+    img.style.display = "none";
+    const placeholder = img.parentElement.querySelector(".image-placeholder");
+    if (placeholder) placeholder.style.display = "flex";
   });
 });
-
-document.getElementById("year").textContent = new Date().getFullYear();

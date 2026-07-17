@@ -1,27 +1,42 @@
-# Pietro Tramontin — portfolio v2
+# Pietro Portfolio v3
 
-## Bestanden vervangen op GitHub
+Deze versie is donkerder, filmischer en beeldgedreven.
 
-Upload deze drie bestanden naar de hoofdmap van je repository:
+## Uploaden naar GitHub
+
+Upload deze bestanden naar de hoofdmap van je repository:
 
 - `index.html`
 - `style.css`
 - `script.js`
+- de map `images`
 
-Kies bij het uploaden voor **Commit changes**. Bestanden met dezelfde naam worden vervangen.
+Kies daarna **Commit changes**.
 
-## Eerst aanpassen
+## Foto's toevoegen
 
-Zoek in `index.html` naar:
+In de map `images` staan twee lege placeholderbestanden:
+
+- `pietro.jpg` — jouw portretfoto
+- `klokkenhof.jpg` — een foto van De Klokkenhof
+
+Vervang die bestanden door echte jpg-foto's met precies dezelfde bestandsnamen.
+
+Aanbevolen:
+
+- `pietro.jpg`: verticale foto, minimaal 1600 px hoog
+- `klokkenhof.jpg`: liggende foto, minimaal 2000 px breed
+
+## Tekst aanpassen
+
+Open `index.html` en vervang:
 
 - `jouwmail@example.com`
 - alle links met `href="#"`
 - `Nieuw project`
-- `Vrijwilligerswerk`
-- `Reportage of artikel`
+- `Nog een project`
+- de bijbehorende beschrijvingen
 
-Vervang deze teksten en links door je eigen gegevens.
+## Lokaal bekijken
 
-## Website bekijken zonder hem live te zetten
-
-Dubbelklik op je computer op `index.html`. De website opent dan lokaal in je browser.
+Dubbelklik op `index.html`.
