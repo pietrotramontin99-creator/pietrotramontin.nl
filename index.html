@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio van Pietro Tramontin, journalist en podcastmaker.">
+  <meta name="description" content="Portfolio van Pietro Tramontin, freelance journalist en podcastmaker in Amsterdam.">
+  <meta name="theme-color" content="#f2efe8">
   <title>Pietro Tramontin — Journalist & Podcastmaker</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="page-noise" aria-hidden="true"></div>
+
   <header class="site-header">
-    <a class="logo" href="#top">Pietro Tramontin</a>
-    <nav aria-label="Hoofdnavigatie">
-      <a href="#projecten">Projecten</a>
+    <a class="wordmark" href="#top" aria-label="Naar boven">Pietro Tramontin</a>
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+      Menu
+    </button>
+
+    <nav id="site-nav" aria-label="Hoofdnavigatie">
+      <a href="#werk">Werk</a>
       <a href="#bio">Bio</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -22,92 +27,187 @@
 
   <main id="top">
     <section class="hero">
-      <p class="eyebrow">Journalist & podcastmaker</p>
-      <h1>Verhalen over wonen, steden en de mensen die ze vormgeven.</h1>
-      <p class="intro">
-        Ik maak verhalende podcasts en journalistieke producties voor onder meer Het Parool en DPG Media.
-      </p>
-      <a class="button" href="#projecten">Bekijk mijn werk</a>
-    </section>
-
-    <section id="projecten" class="section">
-      <div class="section-heading">
-        <p class="eyebrow">Geselecteerd werk</p>
-        <h2>Projecten</h2>
+      <div class="hero-kicker reveal">
+        <span>Freelance journalist</span>
+        <span>Podcastmaker</span>
+        <span>Amsterdam</span>
       </div>
 
-      <article class="project featured">
-        <div class="project-number">01</div>
-        <div>
-          <p class="project-type">Podcastserie · Het Parool</p>
-          <h3>De Gekraakte Flat</h3>
-          <p>
-            Een vijfdelige verhalende podcast over De Klokkenhof in Amsterdam:
-            een iconische vrouwenflat, een grote kraakactie en de strijd om betaalbaar wonen.
+      <h1 class="reveal">
+        Verhalen die<br>
+        <em>blijven hangen.</em>
+      </h1>
+
+      <div class="hero-bottom reveal">
+        <p>
+          Ik maak verhalende podcasts en journalistieke producties over wonen,
+          steden, politiek en de mensen achter maatschappelijke verandering.
+        </p>
+        <a class="round-link" href="#werk" aria-label="Bekijk mijn werk">
+          <span>Bekijk werk</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="werk" class="featured-work section">
+      <div class="section-label">
+        <span>01</span>
+        <span>Uitgelicht werk</span>
+      </div>
+
+      <article class="feature-card">
+        <div class="feature-visual" aria-hidden="true">
+          <div class="building">
+            <div class="building-grid">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="building-title">DE<br>GEKRAAKTE<br>FLAT</div>
+          </div>
+        </div>
+
+        <div class="feature-copy">
+          <p class="meta">Podcastserie · Het Parool · 5 afleveringen</p>
+          <h2>De Gekraakte Flat</h2>
+          <p class="large-copy">
+            Een verhalende podcast over De Klokkenhof in Amsterdam:
+            ooit gebouwd voor ongehuwde werkende vrouwen, later het decor van
+            een grote kraakactie en een conflict over de toekomst van de stad.
           </p>
-          <a href="#" aria-label="Luister naar De Gekraakte Flat">Luister naar de podcast →</a>
+
+          <div class="credits">
+            <span>Research, interviews en verhaal</span>
+            <strong>Pietro Tramontin</strong>
+          </div>
+
+          <a class="text-link" href="#" aria-label="Luister naar De Gekraakte Flat">
+            Luister naar de serie <span>↗</span>
+          </a>
         </div>
       </article>
+    </section>
 
-      <article class="project">
-        <div class="project-number">02</div>
-        <div>
-          <p class="project-type">Audiodocumentaire</p>
+    <section class="work-list section">
+      <div class="section-label">
+        <span>02</span>
+        <span>Meer werk</span>
+      </div>
+
+      <div class="projects">
+        <article class="project">
+          <div class="project-top">
+            <span class="project-year">2026</span>
+            <span class="project-kind">Audiodocumentaire</span>
+          </div>
           <h3>Nieuw project</h3>
           <p>
-            Voeg hier een korte beschrijving toe van een andere podcast, reportage of journalistieke productie.
+            Hier komt een korte, heldere beschrijving van een volgende
+            audiodocumentaire, reportage of podcastproductie.
           </p>
-          <a href="#">Bekijk het project →</a>
-        </div>
-      </article>
+          <a href="#">Bekijk project ↗</a>
+        </article>
 
-      <article class="project">
-        <div class="project-number">03</div>
-        <div>
-          <p class="project-type">Reportage</p>
-          <h3>Nog een project</h3>
+        <article class="project">
+          <div class="project-top">
+            <span class="project-year">2025</span>
+            <span class="project-kind">Podcast</span>
+          </div>
+          <h3>Vrijwilligerswerk</h3>
           <p>
-            Voeg hier later een artikel, radio-item, interview of ander werk toe.
+            Voeg hier een productie toe die je voor een opdrachtgever,
+            redactie of maatschappelijke organisatie hebt gemaakt.
           </p>
-          <a href="#">Lees meer →</a>
+          <a href="#">Bekijk project ↗</a>
+        </article>
+
+        <article class="project">
+          <div class="project-top">
+            <span class="project-year">2025</span>
+            <span class="project-kind">Journalistiek</span>
+          </div>
+          <h3>Reportage of artikel</h3>
+          <p>
+            Ook geschreven werk, radiofragmenten en losse interviews kunnen
+            hier een plek krijgen.
+          </p>
+          <a href="#">Lees meer ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="bio" class="about section">
+      <div class="section-label">
+        <span>03</span>
+        <span>Bio</span>
+      </div>
+
+      <div class="about-grid">
+        <h2>
+          Nieuwsgierig naar hoe grote systemen doorwerken in het leven van
+          gewone mensen.
+        </h2>
+
+        <div class="about-copy">
+          <p>
+            Ik ben Pietro Tramontin, freelance journalist en podcastmaker uit
+            Amsterdam. Mijn werk draait om wonen, steden, politiek en sociale
+            verandering — verteld vanuit de mensen die het meemaken.
+          </p>
+          <p>
+            Ik studeerde Journalistiek en Media aan de Universiteit van
+            Amsterdam en werkte aan producties voor onder meer Het Parool en
+            DPG Media.
+          </p>
+
+          <div class="facts">
+            <div>
+              <span>Basis</span>
+              <strong>Amsterdam</strong>
+            </div>
+            <div>
+              <span>Werkvormen</span>
+              <strong>Podcast · reportage · interview</strong>
+            </div>
+            <div>
+              <span>Beschikbaar voor</span>
+              <strong>Opdrachten en samenwerkingen</strong>
+            </div>
+          </div>
         </div>
-      </article>
-    </section>
-
-    <section id="bio" class="section bio">
-      <div class="section-heading">
-        <p class="eyebrow">Over mij</p>
-        <h2>Bio</h2>
-      </div>
-      <div class="bio-text">
-        <p>
-          Ik ben Pietro Tramontin, freelance journalist en podcastmaker uit Amsterdam.
-          Ik maak verhalende producties over wonen, steden, politiek en de mensen achter grote maatschappelijke veranderingen.
-        </p>
-        <p>
-          Mijn werk verscheen onder meer bij Het Parool en DPG Media. Ik studeerde Journalistiek en Media aan de Universiteit van Amsterdam.
-        </p>
       </div>
     </section>
 
-    <section id="contact" class="section contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Een verhaal, opdracht of samenwerking?</h2>
-      <p>Stuur me gerust een bericht.</p>
-      <div class="contact-links">
-        <a href="mailto:jouwmail@example.com">jouwmail@example.com</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <section id="contact" class="contact section">
+      <div class="section-label light">
+        <span>04</span>
+        <span>Contact</span>
+      </div>
+
+      <div class="contact-inner">
+        <p>Een verhaal, opdracht of idee?</p>
+        <a class="contact-mail" href="mailto:jouwmail@example.com">
+          jouwmail@example.com
+        </a>
+
+        <div class="socials">
+          <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© <span id="year"></span> Pietro Tramontin</p>
+    <span>© <span id="year"></span> Pietro Tramontin</span>
+    <span>Journalist & podcastmaker</span>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

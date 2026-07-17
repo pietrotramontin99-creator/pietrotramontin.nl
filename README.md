@@ -1,25 +1,27 @@
-# Pietro portfolio
+# Pietro Tramontin — portfolio v2
 
-Een simpele one-page portfolio voor GitHub Pages.
+## Bestanden vervangen op GitHub
 
-## Online zetten
+Upload deze drie bestanden naar de hoofdmap van je repository:
 
-1. Maak op GitHub een nieuwe openbare repository.
-2. Upload `index.html` en `style.css`.
-3. Ga naar **Settings → Pages**.
-4. Kies bij **Source**: `Deploy from a branch`.
-5. Kies `main` en `/root`.
-6. Klik op **Save**.
+- `index.html`
+- `style.css`
+- `script.js`
 
-## Aanpassen
+Kies bij het uploaden voor **Commit changes**. Bestanden met dezelfde naam worden vervangen.
 
-Open `index.html` in GitHub en klik op het potloodje.
+## Eerst aanpassen
 
-Vervang vooral:
+Zoek in `index.html` naar:
 
 - `jouwmail@example.com`
-- de `#` bij LinkedIn, Instagram en projectlinks
-- de teksten bij project 2 en 3
-- de korte bio
+- alle links met `href="#"`
+- `Nieuw project`
+- `Vrijwilligerswerk`
+- `Reportage of artikel`
 
-Sla wijzigingen op met **Commit changes**.
+Vervang deze teksten en links door je eigen gegevens.
+
+## Website bekijken zonder hem live te zetten
+
+Dubbelklik op je computer op `index.html`. De website opent dan lokaal in je browser.
