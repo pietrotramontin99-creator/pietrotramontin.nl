@@ -1,42 +1,36 @@
-# Pietro Portfolio v3
-
-Deze versie is donkerder, filmischer en beeldgedreven.
+# Pietro Tramontin — Portfolio v4
 
 ## Uploaden naar GitHub
 
-Upload deze bestanden naar de hoofdmap van je repository:
+Vervang de oude websitebestanden door:
 
-- `index.html`
-- `style.css`
-- `script.js`
-- de map `images`
+- index.html
+- style.css
+- script.js
+- lelijkste-flat.html
+- gratis-en-voor-niets.html
+- de volledige map images
 
-Kies daarna **Commit changes**.
+## Je portret toevoegen
 
-## Foto's toevoegen
+Plaats in de map `images` een foto met precies deze naam:
 
-In de map `images` staan twee lege placeholderbestanden:
+`pietro.jpg`
 
-- `pietro.jpg` — jouw portretfoto
-- `klokkenhof.jpg` — een foto van De Klokkenhof
+Gebruik bij voorkeur een verticale foto van minimaal 1600 pixels hoog.
 
-Vervang die bestanden door echte jpg-foto's met precies dezelfde bestandsnamen.
+## Nog aanpassen in index.html
 
-Aanbevolen:
-
-- `pietro.jpg`: verticale foto, minimaal 1600 px hoog
-- `klokkenhof.jpg`: liggende foto, minimaal 2000 px breed
-
-## Tekst aanpassen
-
-Open `index.html` en vervang:
+Zoek en vervang:
 
 - `jouwmail@example.com`
-- alle links met `href="#"`
-- `Nieuw project`
-- `Nog een project`
-- de bijbehorende beschrijvingen
+- de LinkedIn-link met `href="#"`
+- de Instagram-link met `href="#"`
 
-## Lokaal bekijken
+## Covers
 
-Dubbelklik op `index.html`.
+De covers zijn uit de aangeleverde Spotify-screenshots gehaald. Voor maximale
+scherpte kun je ze later vervangen door de originele bestanden, met behoud van:
+
+- `lelijkste-flat.jpg`
+- `gratis-en-voor-niets.jpg`

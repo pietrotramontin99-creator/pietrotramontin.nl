@@ -1,9 +1,20 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-document.querySelectorAll("img").forEach((img) => {
-  img.addEventListener("error", () => {
-    img.style.display = "none";
-    const placeholder = img.parentElement.querySelector(".image-placeholder");
-    if (placeholder) placeholder.style.display = "flex";
+const portrait = document.querySelector(".portrait");
+if (portrait) {
+  portrait.addEventListener("error", () => {
+    portrait.style.display = "none";
+    document.querySelector(".portrait-fallback").style.display = "flex";
   });
-});
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));

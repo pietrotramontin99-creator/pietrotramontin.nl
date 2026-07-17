@@ -1,115 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pietro Tramontin — freelance journalist en podcastmaker in Amsterdam.">
-  <meta name="theme-color" content="#0d0d0d">
-  <title>Pietro Tramontin — Journalist & Podcastmaker</title>
-  <link rel="stylesheet" href="style.css">
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="Pietro Tramontin — journalist en podcastmaker uit Amsterdam.">
+  <title>Pietro Tramontin — Journalist & podcastmaker</title>
 </head>
 <body>
-  <header class="site-header">
-    <a href="#top" class="logo">PT</a>
-    <nav>
-      <a href="#werk">Werk</a>
-      <a href="#over">Over</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header class="nav">
+  <a class="wordmark" href="index.html">Pietro Tramontin</a>
+  <nav>
+    <a href="#werk">Werk</a>
+    <a href="#over">Over</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-image">
-        <img src="images/pietro.jpg" alt="Portret van Pietro Tramontin">
-        <div class="image-placeholder">
-          <span>Jouw portretfoto</span>
+<main>
+  <section class="hero">
+    <div class="portrait-wrap">
+      <img class="portrait" src="images/pietro.jpg" alt="Portret van Pietro Tramontin">
+      <div class="portrait-fallback">
+        <span>Voeg je portret toe als<br><strong>images/pietro.jpg</strong></span>
+      </div>
+    </div>
+    <div class="hero-gradient"></div>
+    <div class="hero-copy reveal">
+      <p class="kicker">Amsterdam · Journalistiek · Audio</p>
+      <h1>Pietro<br>Tramontin</h1>
+      <p class="subtitle">Journalist & podcastmaker</p>
+    </div>
+    <a class="down" href="#werk">Selected work ↓</a>
+  </section>
+
+  <section id="werk" class="work">
+    <div class="section-intro reveal">
+      <p class="kicker dark">Selected work</p>
+      <h2>Verhalende journalistiek,<br>gemaakt om naar te luisteren.</h2>
+    </div>
+
+    <article class="work-row reveal">
+      <a class="cover-link" href="lelijkste-flat.html" aria-label="Bekijk De lelijkste flat van Amsterdam">
+        <img src="images/lelijkste-flat.jpg" alt="Cover van De lelijkste flat van Amsterdam">
+      </a>
+      <div class="work-copy">
+        <div class="work-meta">
+          <span>2026</span>
+          <span>Podcastserie · Het Parool</span>
+        </div>
+        <h3><a href="lelijkste-flat.html">De lelijkste flat van Amsterdam</a></h3>
+        <p>
+          Een vijfdelige podcastserie over De Klokkenhof, haar bewoners,
+          de krakers en de geschiedenis achter een ontspoorde wooncrisis.
+        </p>
+        <div class="actions">
+          <a class="text-link" href="lelijkste-flat.html">Bekijk project →</a>
+          <a class="text-link muted-link" href="https://open.spotify.com/show/033CWMy0zGlctlvgGnUM39" target="_blank" rel="noopener">Spotify ↗</a>
         </div>
       </div>
+    </article>
 
-      <div class="hero-overlay"></div>
-
-      <div class="hero-copy">
-        <p class="eyebrow">Amsterdam · Journalistiek · Audio</p>
-        <h1>Pietro Tramontin</h1>
-        <p class="role">Journalist & podcastmaker</p>
+    <article class="work-row reveal">
+      <a class="cover-link" href="gratis-en-voor-niets.html" aria-label="Bekijk Gratis en voor (n)iets">
+        <img src="images/gratis-en-voor-niets.jpg" alt="Cover van Gratis en voor (n)iets">
+      </a>
+      <div class="work-copy">
+        <div class="work-meta">
+          <span>2025</span>
+          <span>Tweedelige podcastserie · Vereniging VrijwilligerswerkNL</span>
+        </div>
+        <h3><a href="gratis-en-voor-niets.html">Gratis en voor (n)iets</a></h3>
+        <p>
+          Een tweedelige serie over wat vrijwilligerswerk jongeren kan brengen
+          en waarom een nieuwe generatie vrijwilligers hard nodig is.
+        </p>
+        <div class="actions">
+          <a class="text-link" href="gratis-en-voor-niets.html">Bekijk project →</a>
+          <a class="text-link muted-link" href="https://open.spotify.com/show/3WJLI9ZzemZ6k6axRcHzVA" target="_blank" rel="noopener">Spotify ↗</a>
+        </div>
       </div>
+    </article>
+  </section>
 
-      <a href="#werk" class="scroll-link">Scroll</a>
-    </section>
-
-    <section id="werk" class="project-section">
-      <article class="project project-main">
-        <a href="#" class="project-link">
-          <div class="project-image">
-            <img src="images/klokkenhof.jpg" alt="De Klokkenhof in Amsterdam">
-            <div class="image-placeholder project-placeholder">
-              <span>Foto van De Klokkenhof</span>
-            </div>
-          </div>
-
-          <div class="project-shade"></div>
-
-          <div class="project-meta">
-            <span>01</span>
-            <span>Podcastserie · Het Parool</span>
-          </div>
-
-          <div class="project-title">
-            <h2>De Gekraakte Flat</h2>
-            <p>
-              Een vijfdelige verhalende podcast over wonen, kraken en de toekomst van Amsterdam.
-            </p>
-          </div>
-        </a>
-      </article>
-
-      <article class="project project-secondary">
-        <a href="#" class="project-link">
-          <div class="project-image abstract-one"></div>
-          <div class="project-shade"></div>
-
-          <div class="project-meta">
-            <span>02</span>
-            <span>Audiodocumentaire</span>
-          </div>
-
-          <div class="project-title">
-            <h2>Nieuw project</h2>
-            <p>Vervang dit door je volgende productie.</p>
-          </div>
-        </a>
-      </article>
-
-      <article class="project project-secondary">
-        <a href="#" class="project-link">
-          <div class="project-image abstract-two"></div>
-          <div class="project-shade"></div>
-
-          <div class="project-meta">
-            <span>03</span>
-            <span>Journalistieke productie</span>
-          </div>
-
-          <div class="project-title">
-            <h2>Nog een project</h2>
-            <p>Hier kan een reportage, interview of podcast komen.</p>
-          </div>
-        </a>
-      </article>
-    </section>
-
-    <section id="over" class="about">
-      <div class="section-number">04</div>
-
-      <div class="about-heading">
-        <p class="eyebrow dark">Over</p>
-        <h2>
-          Ik maak verhalende journalistiek over wonen, steden, politiek en de mensen achter maatschappelijke verandering.
-        </h2>
-      </div>
-
-      <div class="about-copy">
+  <section id="over" class="about reveal">
+    <p class="kicker dark">Over</p>
+    <div class="about-grid">
+      <h2>Ik maak verhalende journalistiek over wonen, steden, politiek en maatschappelijke verandering.</h2>
+      <div class="body-copy">
         <p>
           Ik ben Pietro Tramontin, freelance journalist en podcastmaker uit Amsterdam.
           Mijn werk verscheen onder meer bij Het Parool en DPG Media.
@@ -118,42 +99,25 @@
           Ik studeerde Journalistiek en Media aan de Universiteit van Amsterdam
           en werk aan podcasts, interviews, reportages en audiodocumentaires.
         </p>
-
-        <div class="about-details">
-          <div>
-            <span>Werkvormen</span>
-            <strong>Podcast · reportage · interview</strong>
-          </div>
-          <div>
-            <span>Basis</span>
-            <strong>Amsterdam</strong>
-          </div>
-          <div>
-            <span>Beschikbaar voor</span>
-            <strong>Opdrachten en samenwerkingen</strong>
-          </div>
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" class="contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Een opdracht, verhaal of samenwerking?</h2>
-      <a class="mail" href="mailto:jouwmail@example.com">jouwmail@example.com</a>
+  <section id="contact" class="contact reveal">
+    <p class="kicker">Contact</p>
+    <h2>Een opdracht, verhaal<br>of samenwerking?</h2>
+    <a class="email" href="mailto:jouwmail@example.com">jouwmail@example.com</a>
+    <div class="socials">
+      <a href="#" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="#" target="_blank" rel="noopener">Instagram ↗</a>
+    </div>
+  </section>
+</main>
 
-      <div class="social-links">
-        <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Spotify ↗</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <span>© <span id="year"></span> Pietro Tramontin</span>
-    <span>Journalist & podcastmaker</span>
-  </footer>
-
-  <script src="script.js"></script>
+<footer>
+  <span>© <span id="year"></span> Pietro Tramontin</span>
+  <span>Journalist & podcastmaker</span>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
