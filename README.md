@@ -1,15 +1,19 @@
-# Mobiele mediaband v3
+# Mobiele app-links
 
-Op telefoon/tablet tot 820 px:
-- de band beweegt automatisch;
-- je kunt hem met je vinger links en rechts slepen;
-- tijdens aanraken pauzeert hij;
-- na loslaten gaat hij automatisch verder;
-- bij terugkeren naar de pagina wordt hij opnieuw gestart.
+Op telefoons/tablets tot 820 px:
+- Spotify-links mogen naar de Spotify-app openen;
+- Apple Podcasts-links mogen naar de Podcasts-app openen;
+- Instagram-links mogen naar de Instagram-app openen;
+- LinkedIn-links mogen naar de LinkedIn-app openen;
+- links openen niet langer geforceerd in een nieuw tabblad.
 
-Desktop is ongewijzigd.
+Dit gebruikt de officiële HTTPS universal links. Als de app niet is geïnstalleerd,
+opent de gewone website.
+
+Desktopgedrag is ongewijzigd.
 
 Upload minimaal:
 - index.html
-- style.css
+- lelijkste-flat.html
+- gratis-en-voor-niets.html
 - script.js

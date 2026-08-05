@@ -252,24 +252,30 @@ window.addEventListener("scroll", scheduleHide, { passive: true });
   if (!scroller || !track) return;
 
   let raf = null;
-  let last = 0;
+  let lastTime = 0;
+  let position = 0;
   let touching = false;
   let resumeTimer = null;
-  const speed = 28; // pixels per second
+  let ignoreProgrammaticScroll = false;
+  const speed = 32; // pixels per second
 
   function loopWidth() {
     return track.scrollWidth / 2;
   }
 
-  function wrap() {
+  function normalizePosition(value) {
     const half = loopWidth();
-    if (!half) return;
+    if (!half) return 0;
+    return ((value % half) + half) % half;
+  }
 
-    if (scroller.scrollLeft >= half) {
-      scroller.scrollLeft -= half;
-    } else if (scroller.scrollLeft < 0) {
-      scroller.scrollLeft += half;
-    }
+  function render() {
+    position = normalizePosition(position);
+    ignoreProgrammaticScroll = true;
+    scroller.scrollLeft = position;
+    requestAnimationFrame(() => {
+      ignoreProgrammaticScroll = false;
+    });
   }
 
   function stop() {
@@ -277,22 +283,22 @@ window.addEventListener("scroll", scheduleHide, { passive: true });
       cancelAnimationFrame(raf);
       raf = null;
     }
-    last = 0;
+    lastTime = 0;
   }
 
   function tick(now) {
     if (!mq.matches || touching || document.hidden) {
       raf = null;
-      last = 0;
+      lastTime = 0;
       return;
     }
 
-    if (!last) last = now;
-    const dt = Math.min((now - last) / 1000, 0.05);
-    last = now;
+    if (!lastTime) lastTime = now;
+    const dt = Math.min((now - lastTime) / 1000, 0.05);
+    lastTime = now;
 
-    scroller.scrollLeft += speed * dt;
-    wrap();
+    position += speed * dt;
+    render();
     raf = requestAnimationFrame(tick);
   }
 
@@ -308,42 +314,51 @@ window.addEventListener("scroll", scheduleHide, { passive: true });
   }
 
   function reset() {
+    if (!mq.matches) return;
+
     clearTimeout(resumeTimer);
     touching = false;
+    activeItem = null;
+
     scroller.classList.remove("is-paused", "is-touching");
     popup?.classList.remove("is-visible");
     popup?.setAttribute("aria-hidden", "true");
-    activeItem = null;
+
+    position = normalizePosition(scroller.scrollLeft);
     stop();
-    wrap();
+    render();
     start();
   }
 
   scroller.addEventListener("touchstart", () => {
     if (!mq.matches) return;
     touching = true;
+    scroller.classList.add("is-touching");
+    position = scroller.scrollLeft;
     stop();
   }, { passive: true });
 
   scroller.addEventListener("touchmove", () => {
     if (!mq.matches) return;
-    wrap();
+    position = scroller.scrollLeft;
   }, { passive: true });
 
-  const finishTouch = () => {
+  function finishTouch() {
     if (!mq.matches) return;
     touching = false;
-    wrap();
+    scroller.classList.remove("is-touching");
+    position = normalizePosition(scroller.scrollLeft);
+    render();
     resumeAfter();
-  };
+  }
 
   scroller.addEventListener("touchend", finishTouch, { passive: true });
   scroller.addEventListener("touchcancel", finishTouch, { passive: true });
 
   scroller.addEventListener("scroll", () => {
-    if (!mq.matches) return;
-    wrap();
-    if (!touching) resumeAfter(600);
+    if (!mq.matches || ignoreProgrammaticScroll) return;
+    position = normalizePosition(scroller.scrollLeft);
+    if (!touching) resumeAfter(650);
   }, { passive: true });
 
   window.addEventListener("load", reset);
@@ -356,12 +371,54 @@ window.addEventListener("scroll", scheduleHide, { passive: true });
 
   mq.addEventListener?.("change", () => {
     stop();
-    if (mq.matches) reset();
-    else scroller.scrollLeft = 0;
+    if (mq.matches) {
+      reset();
+    } else {
+      scroller.scrollLeft = 0;
+      position = 0;
+    }
   });
 
-  // Start after images/layout have had time to settle.
+  // Start after layout and remote logos have settled.
   requestAnimationFrame(() => {
     requestAnimationFrame(reset);
+  });
+  setTimeout(reset, 500);
+  setTimeout(reset, 1500);
+})();
+
+
+// Mobile-only: let supported HTTPS links open their installed apps.
+(() => {
+  const mobileQuery = window.matchMedia("(max-width: 820px)");
+  if (!mobileQuery.matches) return;
+
+  const supportedHosts = new Set([
+    "open.spotify.com",
+    "podcasts.apple.com",
+    "www.instagram.com",
+    "instagram.com",
+    "www.linkedin.com",
+    "linkedin.com"
+  ]);
+
+  document.querySelectorAll("a[href]").forEach((link) => {
+    let url;
+
+    try {
+      url = new URL(link.href, window.location.href);
+    } catch {
+      return;
+    }
+
+    if (!supportedHosts.has(url.hostname)) return;
+
+    // Universal links work most reliably in the current browsing context.
+    link.removeAttribute("target");
+
+    // Preserve normal browser behavior while preventing forced new tabs.
+    link.addEventListener("click", () => {
+      link.removeAttribute("target");
+    }, { passive: true });
   });
 })();
