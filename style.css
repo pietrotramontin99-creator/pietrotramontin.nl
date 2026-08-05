@@ -746,17 +746,17 @@ footer{
 }
 
 
-/* Mobile-only: touch-scrollable media marquee */
-@media (max-width: 820px) and (hover: none) {
+
+
+/* Mobile-only: autoplaying + touch-draggable media marquee */
+@media (max-width: 820px) {
   .media-marquee {
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     touch-action: pan-x;
-    cursor: grab;
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%);
+    overscroll-behavior-x: contain;
   }
 
   .media-marquee::-webkit-scrollbar {
@@ -767,10 +767,6 @@ footer{
     animation: none !important;
     transform: none !important;
     will-change: auto;
-  }
-
-  .media-marquee.is-touching {
-    cursor: grabbing;
   }
 
   .media-popup {

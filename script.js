@@ -239,157 +239,129 @@ window.addEventListener("resize", () => {
 window.addEventListener("scroll", scheduleHide, { passive: true });
 
 
-// Mobile-only: draggable media marquee that resumes automatically.
+
+
+
+
+// Mobile-only: continuously moving marquee that can also be swiped.
 (() => {
-  const mobileQuery = window.matchMedia("(max-width: 820px) and (hover: none)");
-  const mobileMarquee = document.querySelector(".media-marquee");
-  const mobileTrack = document.querySelector(".media-track");
+  const mq = window.matchMedia("(max-width: 820px)");
+  const scroller = document.querySelector(".media-marquee");
+  const track = document.querySelector(".media-track");
 
-  if (!mobileMarquee || !mobileTrack) return;
+  if (!scroller || !track) return;
 
-  let frameId = null;
+  let raf = null;
+  let last = 0;
+  let touching = false;
   let resumeTimer = null;
-  let lastTime = 0;
-  let isTouching = false;
-  const speed = 24;
+  const speed = 28; // pixels per second
 
-  function halfTrackWidth() {
-    return mobileTrack.scrollWidth / 2;
+  function loopWidth() {
+    return track.scrollWidth / 2;
   }
 
-  function normalizeScroll() {
-    const half = halfTrackWidth();
+  function wrap() {
+    const half = loopWidth();
     if (!half) return;
 
-    if (mobileMarquee.scrollLeft >= half) {
-      mobileMarquee.scrollLeft -= half;
-    } else if (mobileMarquee.scrollLeft < 0) {
-      mobileMarquee.scrollLeft += half;
+    if (scroller.scrollLeft >= half) {
+      scroller.scrollLeft -= half;
+    } else if (scroller.scrollLeft < 0) {
+      scroller.scrollLeft += half;
     }
   }
 
-  function stopAutoScroll() {
-    if (frameId !== null) {
-      cancelAnimationFrame(frameId);
-      frameId = null;
+  function stop() {
+    if (raf !== null) {
+      cancelAnimationFrame(raf);
+      raf = null;
     }
-    lastTime = 0;
+    last = 0;
   }
 
-  function step(time) {
-    if (!mobileQuery.matches || isTouching || document.hidden) {
-      frameId = null;
-      lastTime = 0;
+  function tick(now) {
+    if (!mq.matches || touching || document.hidden) {
+      raf = null;
+      last = 0;
       return;
     }
 
-    if (!lastTime) lastTime = time;
-    const delta = Math.min((time - lastTime) / 1000, 0.05);
-    lastTime = time;
+    if (!last) last = now;
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
 
-    mobileMarquee.scrollLeft += speed * delta;
-    normalizeScroll();
-    frameId = requestAnimationFrame(step);
+    scroller.scrollLeft += speed * dt;
+    wrap();
+    raf = requestAnimationFrame(tick);
   }
 
-  function startAutoScroll() {
+  function start() {
     clearTimeout(resumeTimer);
-    if (!mobileQuery.matches || isTouching || document.hidden || frameId !== null) return;
-    frameId = requestAnimationFrame(step);
+    if (!mq.matches || touching || document.hidden || raf !== null) return;
+    raf = requestAnimationFrame(tick);
   }
 
-  function resumeSoon(delay = 550) {
+  function resumeAfter(delay = 450) {
     clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(startAutoScroll, delay);
+    resumeTimer = setTimeout(start, delay);
   }
 
-  function resetMobileMarquee() {
-    if (!mobileQuery.matches) return;
-
+  function reset() {
     clearTimeout(resumeTimer);
-    clearTimeout(hideTimer);
-    activeItem = null;
-    isTouching = false;
-
-    mobileMarquee.classList.remove("is-paused", "is-touching");
+    touching = false;
+    scroller.classList.remove("is-paused", "is-touching");
     popup?.classList.remove("is-visible");
     popup?.setAttribute("aria-hidden", "true");
-
-    normalizeScroll();
-    stopAutoScroll();
-    startAutoScroll();
+    activeItem = null;
+    stop();
+    wrap();
+    start();
   }
 
-  mobileMarquee.addEventListener("touchstart", () => {
-    if (!mobileQuery.matches) return;
-    isTouching = true;
-    mobileMarquee.classList.add("is-touching");
-    stopAutoScroll();
+  scroller.addEventListener("touchstart", () => {
+    if (!mq.matches) return;
+    touching = true;
+    stop();
   }, { passive: true });
 
-  mobileMarquee.addEventListener("touchmove", () => {
-    if (!mobileQuery.matches) return;
-    normalizeScroll();
+  scroller.addEventListener("touchmove", () => {
+    if (!mq.matches) return;
+    wrap();
   }, { passive: true });
 
-  function finishTouch() {
-    if (!mobileQuery.matches) return;
-    isTouching = false;
-    mobileMarquee.classList.remove("is-touching");
-    normalizeScroll();
-    resumeSoon();
-  }
+  const finishTouch = () => {
+    if (!mq.matches) return;
+    touching = false;
+    wrap();
+    resumeAfter();
+  };
 
-  mobileMarquee.addEventListener("touchend", finishTouch, { passive: true });
-  mobileMarquee.addEventListener("touchcancel", finishTouch, { passive: true });
+  scroller.addEventListener("touchend", finishTouch, { passive: true });
+  scroller.addEventListener("touchcancel", finishTouch, { passive: true });
 
-  mobileMarquee.addEventListener("scroll", () => {
-    if (!mobileQuery.matches) return;
-    normalizeScroll();
-    if (!isTouching) resumeSoon(700);
+  scroller.addEventListener("scroll", () => {
+    if (!mq.matches) return;
+    wrap();
+    if (!touching) resumeAfter(600);
   }, { passive: true });
 
-  window.addEventListener("pageshow", resetMobileMarquee);
+  window.addEventListener("load", reset);
+  window.addEventListener("pageshow", reset);
 
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-      stopAutoScroll();
-    } else {
-      resetMobileMarquee();
-    }
+    if (document.hidden) stop();
+    else reset();
   });
 
-  mobileQuery.addEventListener?.("change", () => {
-    stopAutoScroll();
-
-    if (mobileQuery.matches) {
-      resetMobileMarquee();
-    } else {
-      mobileMarquee.scrollLeft = 0;
-      mobileMarquee.classList.remove("is-touching", "is-paused");
-    }
+  mq.addEventListener?.("change", () => {
+    stop();
+    if (mq.matches) reset();
+    else scroller.scrollLeft = 0;
   });
 
-  if (mobileQuery.matches) {
-    requestAnimationFrame(resetMobileMarquee);
-  }
+  // Start after images/layout have had time to settle.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(reset);
+  });
 })();
-
-
-// Ensure Safari/iOS never keeps the marquee frozen after opening an article.
-window.addEventListener("pagehide", () => {
-  document.querySelector(".media-marquee")?.classList.remove("is-paused", "is-touching");
-});
-
-window.addEventListener("pageshow", (event) => {
-  const mobileMarquee = document.querySelector(".media-marquee");
-  const popup = document.querySelector(".media-popup");
-
-  mobileMarquee?.classList.remove("is-paused", "is-touching");
-  popup?.classList.remove("is-visible");
-  popup?.setAttribute("aria-hidden", "true");
-
-  if (event.persisted) {
-    window.dispatchEvent(new Event("resize"));
-  }
-});

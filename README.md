@@ -1,10 +1,13 @@
-# Mobiele mediaband — cachefix
+# Mobiele mediaband v3
 
-Deze versie:
-- forceert nieuwe CSS en JavaScript via queryparameters;
-- werkt op touchapparaten tot 820 px breed;
-- reset de band expliciet bij terugkeren via Safari/iOS bfcache;
-- laat desktop met muis volledig ongemoeid.
+Op telefoon/tablet tot 820 px:
+- de band beweegt automatisch;
+- je kunt hem met je vinger links en rechts slepen;
+- tijdens aanraken pauzeert hij;
+- na loslaten gaat hij automatisch verder;
+- bij terugkeren naar de pagina wordt hij opnieuw gestart.
+
+Desktop is ongewijzigd.
 
 Upload minimaal:
 - index.html
