@@ -237,3 +237,159 @@ window.addEventListener("resize", () => {
   if (activeItem) positionPopup(activeItem);
 });
 window.addEventListener("scroll", scheduleHide, { passive: true });
+
+
+// Mobile-only: draggable media marquee that resumes automatically.
+(() => {
+  const mobileQuery = window.matchMedia("(max-width: 820px) and (hover: none)");
+  const mobileMarquee = document.querySelector(".media-marquee");
+  const mobileTrack = document.querySelector(".media-track");
+
+  if (!mobileMarquee || !mobileTrack) return;
+
+  let frameId = null;
+  let resumeTimer = null;
+  let lastTime = 0;
+  let isTouching = false;
+  const speed = 24;
+
+  function halfTrackWidth() {
+    return mobileTrack.scrollWidth / 2;
+  }
+
+  function normalizeScroll() {
+    const half = halfTrackWidth();
+    if (!half) return;
+
+    if (mobileMarquee.scrollLeft >= half) {
+      mobileMarquee.scrollLeft -= half;
+    } else if (mobileMarquee.scrollLeft < 0) {
+      mobileMarquee.scrollLeft += half;
+    }
+  }
+
+  function stopAutoScroll() {
+    if (frameId !== null) {
+      cancelAnimationFrame(frameId);
+      frameId = null;
+    }
+    lastTime = 0;
+  }
+
+  function step(time) {
+    if (!mobileQuery.matches || isTouching || document.hidden) {
+      frameId = null;
+      lastTime = 0;
+      return;
+    }
+
+    if (!lastTime) lastTime = time;
+    const delta = Math.min((time - lastTime) / 1000, 0.05);
+    lastTime = time;
+
+    mobileMarquee.scrollLeft += speed * delta;
+    normalizeScroll();
+    frameId = requestAnimationFrame(step);
+  }
+
+  function startAutoScroll() {
+    clearTimeout(resumeTimer);
+    if (!mobileQuery.matches || isTouching || document.hidden || frameId !== null) return;
+    frameId = requestAnimationFrame(step);
+  }
+
+  function resumeSoon(delay = 550) {
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(startAutoScroll, delay);
+  }
+
+  function resetMobileMarquee() {
+    if (!mobileQuery.matches) return;
+
+    clearTimeout(resumeTimer);
+    clearTimeout(hideTimer);
+    activeItem = null;
+    isTouching = false;
+
+    mobileMarquee.classList.remove("is-paused", "is-touching");
+    popup?.classList.remove("is-visible");
+    popup?.setAttribute("aria-hidden", "true");
+
+    normalizeScroll();
+    stopAutoScroll();
+    startAutoScroll();
+  }
+
+  mobileMarquee.addEventListener("touchstart", () => {
+    if (!mobileQuery.matches) return;
+    isTouching = true;
+    mobileMarquee.classList.add("is-touching");
+    stopAutoScroll();
+  }, { passive: true });
+
+  mobileMarquee.addEventListener("touchmove", () => {
+    if (!mobileQuery.matches) return;
+    normalizeScroll();
+  }, { passive: true });
+
+  function finishTouch() {
+    if (!mobileQuery.matches) return;
+    isTouching = false;
+    mobileMarquee.classList.remove("is-touching");
+    normalizeScroll();
+    resumeSoon();
+  }
+
+  mobileMarquee.addEventListener("touchend", finishTouch, { passive: true });
+  mobileMarquee.addEventListener("touchcancel", finishTouch, { passive: true });
+
+  mobileMarquee.addEventListener("scroll", () => {
+    if (!mobileQuery.matches) return;
+    normalizeScroll();
+    if (!isTouching) resumeSoon(700);
+  }, { passive: true });
+
+  window.addEventListener("pageshow", resetMobileMarquee);
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopAutoScroll();
+    } else {
+      resetMobileMarquee();
+    }
+  });
+
+  mobileQuery.addEventListener?.("change", () => {
+    stopAutoScroll();
+
+    if (mobileQuery.matches) {
+      resetMobileMarquee();
+    } else {
+      mobileMarquee.scrollLeft = 0;
+      mobileMarquee.classList.remove("is-touching", "is-paused");
+    }
+  });
+
+  if (mobileQuery.matches) {
+    requestAnimationFrame(resetMobileMarquee);
+  }
+})();
+
+
+// Ensure Safari/iOS never keeps the marquee frozen after opening an article.
+window.addEventListener("pagehide", () => {
+  document.querySelector(".media-marquee")?.classList.remove("is-paused", "is-touching");
+});
+
+window.addEventListener("pageshow", (event) => {
+  const mobileMarquee = document.querySelector(".media-marquee");
+  const popup = document.querySelector(".media-popup");
+
+  mobileMarquee?.classList.remove("is-paused", "is-touching");
+  popup?.classList.remove("is-visible");
+  popup?.setAttribute("aria-hidden", "true");
+
+  if (event.persisted) {
+    window.dispatchEvent(new Event("resize"));
+  }
+});
