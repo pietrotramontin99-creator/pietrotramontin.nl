@@ -626,17 +626,43 @@ footer{
 }
 
 
-/* V6.10 — compact project descriptions */
+
+
+/* V6.11 — normal body text for project descriptions */
 .project-copy-new > p,
-.work-copy > p{
-  max-width:540px !important;
-  margin:18px 0 20px !important;
-  font-size:.98rem !important;
-  line-height:1.65 !important;
-  font-weight:400 !important;
-  color:#5f5a54 !important;
+.project-copy-new p,
+.work-copy > p,
+.work-copy p{
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size:15px !important;
+    font-weight:400 !important;
+    line-height:1.72 !important;
+    letter-spacing:0 !important;
+    color:#5f5a54 !important;
+    max-width:540px !important;
+    margin:16px 0 18px !important;
 }
 
 .home-review{
-  margin:10px 0 26px !important;
+    margin-top:8px !important;
+}
+
+
+/* V6.12 - force normal body paragraphs */
+.projects-section p:not(.kicker):not(.home-review-source):not(.home-review-quote),
+.work p:not(.kicker):not(.home-review-source):not(.home-review-quote){
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.75 !important;
+    letter-spacing: 0 !important;
+    color:#5b5752 !important;
+    max-width: 540px !important;
+    margin: 14px 0 18px !important;
+}
+
+.project-copy-new h3 + p,
+.work-copy h3 + p{
+    font-size:14px !important;
+    font-weight:400 !important;
 }

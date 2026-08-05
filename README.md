@@ -1,15 +1,14 @@
-# Pietro Tramontin — Portfolio v6.10
+# Pietro Tramontin — Portfolio v6.13
 
-Deze versie wijzigt uitsluitend:
+De twee projectbeschrijvingen hebben nu rechtstreeks in `index.html` een vaste normale paragraafstijl:
 
-- de projectbeschrijving van `De lelijkste flat van Amsterdam`;
-- de projectbeschrijving van `Gratis en voor (n)iets`;
-- kleinere, lichtere projecttekst;
-- de VPRO-recensie iets dichter op de beschrijving.
+- 14 px
+- gewicht 400
+- regelafstand 1.7
+- Arial/Helvetica
+- maximaal 540 px breed
 
-Vervang in GitHub:
+Ook zijn de queryparameters achter `style.css` en `script.js` verwijderd, zodat een lokale HTML-preview de bestanden gewoon vindt.
 
+Vervang minimaal:
 - `index.html`
-- `style.css`
-
-De stylesheet wordt geladen als `style.css?v=610` om browsercache te omzeilen.
