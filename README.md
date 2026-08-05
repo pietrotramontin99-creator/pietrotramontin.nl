@@ -1,14 +1,13 @@
-# Pietro Tramontin — Portfolio v6.13
+# Pietro Tramontin — Portfolio v6.15
 
-De twee projectbeschrijvingen hebben nu rechtstreeks in `index.html` een vaste normale paragraafstijl:
+Aangepast:
+- projectbeschrijvingen op de homepage: normale broodtekst;
+- beschrijvingen op beide losse projectpagina's: normale broodtekst;
+- Diensten: één rustig tekstblok;
+- losse foutieve `</a>` in de hero verwijderd.
 
-- 14 px
-- gewicht 400
-- regelafstand 1.7
-- Arial/Helvetica
-- maximaal 540 px breed
+Vervang in GitHub:
+- index.html
+- style.css
 
-Ook zijn de queryparameters achter `style.css` en `script.js` verwijderd, zodat een lokale HTML-preview de bestanden gewoon vindt.
-
-Vervang minimaal:
-- `index.html`
+De andere bestanden zijn ongewijzigd maar compleet meegeleverd.
