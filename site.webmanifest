@@ -1,0 +1,18 @@
+{
+  "name": "Pietro Tramontin — Journalist & podcastmaker",
+  "short_name": "Pietro Tramontin",
+  "description": "Portfolio en contactgegevens van Pietro Tramontin, freelance journalist en podcastmaker uit Amsterdam. Bekijk zijn verhalende podcasts en neem contact op voor podcastproducties, research, interviews, montage en audioprojecten.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f1eee7",
+  "theme_color": "#111111",
+  "lang": "nl-NL",
+  "icons": [
+    {
+      "src": "/images/microphone-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

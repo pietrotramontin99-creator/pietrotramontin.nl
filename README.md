@@ -1,19 +1,24 @@
-# Mobiele app-links
+# Pietro Tramontin portfolio — SEO + contact
 
-Op telefoons/tablets tot 820 px:
-- Spotify-links mogen naar de Spotify-app openen;
-- Apple Podcasts-links mogen naar de Podcasts-app openen;
-- Instagram-links mogen naar de Instagram-app openen;
-- LinkedIn-links mogen naar de LinkedIn-app openen;
-- links openen niet langer geforceerd in een nieuw tabblad.
+Nieuw in deze versie:
+- microfoonfavicon voor browser, Google en telefoons;
+- homepage-metaomschrijving gericht op portfolio én contact;
+- e-mailadres en professioneel contactpunt toegevoegd aan Person structured data;
+- contactsectie semantisch duidelijker gemaakt voor zoekmachines;
+- webmanifest bijgewerkt met het microfoonicoon.
 
-Dit gebruikt de officiële HTTPS universal links. Als de app niet is geïnstalleerd,
-opent de gewone website.
+Bestaande functionaliteit behouden:
+- mobiele loopband;
+- mobiele app-links;
+- sitemap.xml;
+- robots.txt;
+- Open Graph en social preview;
+- structured data voor beide podcastseries.
 
-Desktopgedrag is ongewijzigd.
+Upload alle bestanden naar de root van de GitHub-repository.
+Voeg de bestanden uit de map `images` toe aan de bestaande images-map.
 
-Upload minimaal:
-- index.html
-- lelijkste-flat.html
-- gratis-en-voor-niets.html
-- script.js
+Vraag na publicatie opnieuw indexering aan voor:
+- https://pietrotramontin.nl/
+- https://pietrotramontin.nl/lelijkste-flat.html
+- https://pietrotramontin.nl/gratis-en-voor-niets.html
