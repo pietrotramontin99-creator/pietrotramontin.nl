@@ -1,36 +1,15 @@
-# Pietro Tramontin — Portfolio v4
+# Pietro Tramontin — Portfolio v6.10
 
-## Uploaden naar GitHub
+Deze versie wijzigt uitsluitend:
 
-Vervang de oude websitebestanden door:
+- de projectbeschrijving van `De lelijkste flat van Amsterdam`;
+- de projectbeschrijving van `Gratis en voor (n)iets`;
+- kleinere, lichtere projecttekst;
+- de VPRO-recensie iets dichter op de beschrijving.
 
-- index.html
-- style.css
-- script.js
-- lelijkste-flat.html
-- gratis-en-voor-niets.html
-- de volledige map images
+Vervang in GitHub:
 
-## Je portret toevoegen
+- `index.html`
+- `style.css`
 
-Plaats in de map `images` een foto met precies deze naam:
-
-`pietro.jpg`
-
-Gebruik bij voorkeur een verticale foto van minimaal 1600 pixels hoog.
-
-## Nog aanpassen in index.html
-
-Zoek en vervang:
-
-- `jouwmail@example.com`
-- de LinkedIn-link met `href="#"`
-- de Instagram-link met `href="#"`
-
-## Covers
-
-De covers zijn uit de aangeleverde Spotify-screenshots gehaald. Voor maximale
-scherpte kun je ze later vervangen door de originele bestanden, met behoud van:
-
-- `lelijkste-flat.jpg`
-- `gratis-en-voor-niets.jpg`
+De stylesheet wordt geladen als `style.css?v=610` om browsercache te omzeilen.
